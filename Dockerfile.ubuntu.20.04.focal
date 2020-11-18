@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM ubuntu:20.04
 
 # Scripts and configuration
 COPY files/root/* /root/
@@ -22,14 +22,14 @@ RUN apt-get update && apt-get install -y \
 
 # clangd for vscode extension
 RUN apt-get update && apt-get install -y \
-    clangd-11
+    clangd-10
 
 # make clangd as default
-RUN update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-11 100
+RUN update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-10 100
 
 # workaround for stropts.h
 # exists in ubuntu:18.04:libc6-dev:/usr/include/stropts.h
-# exists in ubuntu:20.10:musl-dev:/usr/include/x86_64-linux-musl/stropts.h
+# exists in ubuntu:20.04:musl-dev:/usr/include/x86_64-linux-musl/stropts.h
 RUN apt-get update && apt-get install -y \
     musl-dev
 
@@ -48,11 +48,11 @@ RUN ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 RUN apt-get update && apt-get install -y \
     git \
     acl \
-    python3.9 \
-    python3.9-dev \
+    python3.8 \
+    python3.8-dev \
     python3-pip \
     python3-xmltodict
-RUN python3.9 -m pip install curricula curricula-shell
+RUN python3.8 -m pip install curricula curricula-shell
 
 # Misc
 RUN apt-get update && apt-get install -y \

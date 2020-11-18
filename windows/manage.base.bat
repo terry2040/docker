@@ -68,7 +68,7 @@ if exist "%container%" (
 exit /b 0
 
 :docker_run_command
-docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 >"%container%"
+docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE terry2040/csci104 >"%container%"
 exit /b 0
 
 :docker_run
@@ -88,7 +88,7 @@ if not exist %container% (
 exit /b 0
 
 :docker_admin_run_command
-docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN csci104 >"%container%"
+docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN terry2040/csci104 >"%container%"
 exit /b 0
 
 :docker_run_test
@@ -112,7 +112,7 @@ exit /b 0
 :docker_shell
 call :read_container
 if not errorlevel 1 (
-  docker exec -it "%container_id%" bash
+  docker exec -it "%container_id%" zsh
 )
 exit /b
 

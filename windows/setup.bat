@@ -16,7 +16,7 @@ if errorlevel 1 (
 
 REM Create docker image
 echo Creating docker image...
-docker build -t csci104 -f ..\Dockerfile ..
+docker build -t terry2040/csci104 -f ..\Dockerfile ..
 
 REM Get mount point
 echo Creating manager script...

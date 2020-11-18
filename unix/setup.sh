@@ -14,7 +14,7 @@ command -v docker >/dev/null 2>&1 || {
 
 # Create docker image
 echo "Creating docker image..."
-docker build -t csci104 -f ./Dockerfile . || exit $?
+docker build -t terry2040/csci104 -f ./Dockerfile . || exit $?
 
 # Get mount point
 echo "Creating manager script..."
